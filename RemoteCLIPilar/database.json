@@ -1,0 +1,59 @@
+[{
+    "databaseName": "bpulsa",
+    "tables": [
+        {
+          "table_name": "absen",
+          "json_file": "struktur/absen.json"
+        },
+        {
+          "table_name": "admin",
+          "json_file": "struktur/admin.json",
+        },
+        {
+          "table_name": "ad_setting",
+          "json_file": "struktur/ad_setting.json",
+        },
+        {
+          "table_name": "log_ad_show",
+          "json_file": "struktur/log_ad_show.json",
+        },
+        {
+          "table_name": "log_request_ad",
+          "json_file": "struktur/log_request_ad.json",
+        },
+        {
+          "table_name": "member",
+          "json_file": "struktur/member.json",
+        },
+        {
+          "table_name": "news",
+          "json_file": "struktur/news.json",
+        },
+        {
+          "table_name": "payment",
+          "json_file": "struktur/payment.json",
+        },
+        {
+          "table_name": "trade_point",
+          "json_file": "struktur/trade_point.json",
+        }
+    ],
+    "views": [
+        {
+          "table_name": "view_anggaran_kas_221",
+          "json_file": "view/view_anggaran_kas_221.json"
+        }
+    ],
+    "triggers": [
+        {
+          "trigger_name": "anggaran_kas_bef_ins",
+          "json_file": "trigger/anggaran_kas_bef_ins.json"
+        }
+    ],
+    "routines": [
+        {
+          "routine_name": "get_bi_rincian",
+          "json_file": "routine/get_bi_rincian.json"
+        }
+    ]
+}]

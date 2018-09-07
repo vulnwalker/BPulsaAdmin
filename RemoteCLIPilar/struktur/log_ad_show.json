@@ -1,0 +1,84 @@
+{
+    "tableName": "log_ad_show",
+    "dumpFile": "dump\/log_ad_show.sql",
+    "index": [
+        {
+            "column_name": "id",
+            "key_name": "PRIMARY",
+            "non_uniqe": "0"
+        },
+        {
+            "column_name": "id",
+            "key_name": "PRIMARY",
+            "non_uniqe": "0"
+        },
+        {
+            "column_name": "id",
+            "key_name": "PRIMARY",
+            "non_uniqe": "0"
+        },
+        {
+            "column_name": "id",
+            "key_name": "PRIMARY",
+            "non_uniqe": "0"
+        }
+    ],
+    "colums": [
+        {
+            "COLUMN_NAME": "id",
+            "COLUMN_TYPE": "int(11)",
+            "CHARACTER_SET_NAME": null,
+            "COLLATION_NAME": null,
+            "IS_NULLABLE": "NO"
+        },
+        {
+            "COLUMN_NAME": "id_ad",
+            "COLUMN_TYPE": "int(11)",
+            "CHARACTER_SET_NAME": null,
+            "COLLATION_NAME": null,
+            "IS_NULLABLE": "NO"
+        },
+        {
+            "COLUMN_NAME": "id_member",
+            "COLUMN_TYPE": "int(11)",
+            "CHARACTER_SET_NAME": null,
+            "COLLATION_NAME": null,
+            "IS_NULLABLE": "NO"
+        },
+        {
+            "COLUMN_NAME": "tanggal",
+            "COLUMN_TYPE": "date",
+            "CHARACTER_SET_NAME": null,
+            "COLLATION_NAME": null,
+            "IS_NULLABLE": "NO"
+        },
+        {
+            "COLUMN_NAME": "jam",
+            "COLUMN_TYPE": "text",
+            "CHARACTER_SET_NAME": "utf8",
+            "COLLATION_NAME": "utf8_bin",
+            "IS_NULLABLE": "NO"
+        },
+        {
+            "COLUMN_NAME": "point",
+            "COLUMN_TYPE": "int(11)",
+            "CHARACTER_SET_NAME": null,
+            "COLLATION_NAME": null,
+            "IS_NULLABLE": "NO"
+        }
+    ],
+    "default_value": [
+        "INSERT INTO log_ad_show (id,id_ad,id_member,tanggal,jam,point) values ('1','1','1','2018-08-23','09:34','300') ",
+        "INSERT INTO log_ad_show (id,id_ad,id_member,tanggal,jam,point) values ('2','0','0','2018-08-23','09:35','300') ",
+        "INSERT INTO log_ad_show (id,id_ad,id_member,tanggal,jam,point) values ('3','1','4','2018-08-31','18:40','300') ",
+        "INSERT INTO log_ad_show (id,id_ad,id_member,tanggal,jam,point) values ('4','1','1','2018-09-01','23:19','300') ",
+        "INSERT INTO log_ad_show (id,id_ad,id_member,tanggal,jam,point) values ('5','1','1','2018-09-03','09:22','125') ",
+        "INSERT INTO log_ad_show (id,id_ad,id_member,tanggal,jam,point) values ('6','1','1','2018-09-04','21:04','125') ",
+        "INSERT INTO log_ad_show (id,id_ad,id_member,tanggal,jam,point) values ('7','3','2','2018-09-04','21:04','125') ",
+        "INSERT INTO log_ad_show (id,id_ad,id_member,tanggal,jam,point) values ('8','1','1','2018-09-04','21:45','125') ",
+        "INSERT INTO log_ad_show (id,id_ad,id_member,tanggal,jam,point) values ('9','1','1','2018-09-06','22:10','125') ",
+        "INSERT INTO log_ad_show (id,id_ad,id_member,tanggal,jam,point) values ('12','4','1','2018-09-07','21:59','20') ",
+        "INSERT INTO log_ad_show (id,id_ad,id_member,tanggal,jam,point) values ('13','8','1','2018-09-07','23:15','500') ",
+        "INSERT INTO log_ad_show (id,id_ad,id_member,tanggal,jam,point) values ('14','7','1','2018-09-07','23:17','100') "
+    ]
+}

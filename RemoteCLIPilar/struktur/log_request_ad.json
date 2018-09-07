@@ -1,0 +1,98 @@
+{
+    "tableName": "log_request_ad",
+    "dumpFile": "dump\/log_request_ad.sql",
+    "index": [
+        {
+            "column_name": "id",
+            "key_name": "PRIMARY",
+            "non_uniqe": "0"
+        },
+        {
+            "column_name": "id",
+            "key_name": "PRIMARY",
+            "non_uniqe": "0"
+        },
+        {
+            "column_name": "id",
+            "key_name": "PRIMARY",
+            "non_uniqe": "0"
+        },
+        {
+            "column_name": "id",
+            "key_name": "PRIMARY",
+            "non_uniqe": "0"
+        },
+        {
+            "column_name": "id",
+            "key_name": "PRIMARY",
+            "non_uniqe": "0"
+        }
+    ],
+    "colums": [
+        {
+            "COLUMN_NAME": "id",
+            "COLUMN_TYPE": "int(11)",
+            "CHARACTER_SET_NAME": null,
+            "COLLATION_NAME": null,
+            "IS_NULLABLE": "NO"
+        },
+        {
+            "COLUMN_NAME": "id_ad",
+            "COLUMN_TYPE": "int(11)",
+            "CHARACTER_SET_NAME": null,
+            "COLLATION_NAME": null,
+            "IS_NULLABLE": "NO"
+        },
+        {
+            "COLUMN_NAME": "id_member",
+            "COLUMN_TYPE": "int(11)",
+            "CHARACTER_SET_NAME": null,
+            "COLLATION_NAME": null,
+            "IS_NULLABLE": "NO"
+        },
+        {
+            "COLUMN_NAME": "tanggal",
+            "COLUMN_TYPE": "date",
+            "CHARACTER_SET_NAME": null,
+            "COLLATION_NAME": null,
+            "IS_NULLABLE": "NO"
+        },
+        {
+            "COLUMN_NAME": "jam",
+            "COLUMN_TYPE": "text",
+            "CHARACTER_SET_NAME": "utf8",
+            "COLLATION_NAME": "utf8_bin",
+            "IS_NULLABLE": "NO"
+        }
+    ],
+    "default_value": [
+        "INSERT INTO log_request_ad (id,id_ad,id_member,tanggal,jam) values ('1','1','1','2018-08-23','09:34') ",
+        "INSERT INTO log_request_ad (id,id_ad,id_member,tanggal,jam) values ('2','1','2','2018-08-23','19:37') ",
+        "INSERT INTO log_request_ad (id,id_ad,id_member,tanggal,jam) values ('3','1','1','2018-08-23','20:34') ",
+        "INSERT INTO log_request_ad (id,id_ad,id_member,tanggal,jam) values ('4','1','4','2018-08-31','18:40') ",
+        "INSERT INTO log_request_ad (id,id_ad,id_member,tanggal,jam) values ('5','2','4','2018-08-31','18:40') ",
+        "INSERT INTO log_request_ad (id,id_ad,id_member,tanggal,jam) values ('6','2','4','2018-08-31','18:41') ",
+        "INSERT INTO log_request_ad (id,id_ad,id_member,tanggal,jam) values ('7','1','1','2018-09-01','23:19') ",
+        "INSERT INTO log_request_ad (id,id_ad,id_member,tanggal,jam) values ('8','1','1','2018-09-03','09:21') ",
+        "INSERT INTO log_request_ad (id,id_ad,id_member,tanggal,jam) values ('9','1','1','2018-09-03','09:21') ",
+        "INSERT INTO log_request_ad (id,id_ad,id_member,tanggal,jam) values ('10','1','1','2018-09-03','09:22') ",
+        "INSERT INTO log_request_ad (id,id_ad,id_member,tanggal,jam) values ('11','1','2','2018-09-04','21:03') ",
+        "INSERT INTO log_request_ad (id,id_ad,id_member,tanggal,jam) values ('12','1','1','2018-09-04','21:04') ",
+        "INSERT INTO log_request_ad (id,id_ad,id_member,tanggal,jam) values ('13','2','2','2018-09-04','21:04') ",
+        "INSERT INTO log_request_ad (id,id_ad,id_member,tanggal,jam) values ('14','3','2','2018-09-04','21:04') ",
+        "INSERT INTO log_request_ad (id,id_ad,id_member,tanggal,jam) values ('15','1','1','2018-09-04','21:45') ",
+        "INSERT INTO log_request_ad (id,id_ad,id_member,tanggal,jam) values ('16','1','1','2018-09-06','22:10') ",
+        "INSERT INTO log_request_ad (id,id_ad,id_member,tanggal,jam) values ('17','1','1','2018-09-06','22:10') ",
+        "INSERT INTO log_request_ad (id,id_ad,id_member,tanggal,jam) values ('18','4','1','2018-09-07','21:51') ",
+        "INSERT INTO log_request_ad (id,id_ad,id_member,tanggal,jam) values ('19','4','1','2018-09-07','21:52') ",
+        "INSERT INTO log_request_ad (id,id_ad,id_member,tanggal,jam) values ('20','4','1','2018-09-07','21:59') ",
+        "INSERT INTO log_request_ad (id,id_ad,id_member,tanggal,jam) values ('21','7','1','2018-09-07','23:07') ",
+        "INSERT INTO log_request_ad (id,id_ad,id_member,tanggal,jam) values ('22','7','1','2018-09-07','23:12') ",
+        "INSERT INTO log_request_ad (id,id_ad,id_member,tanggal,jam) values ('23','7','1','2018-09-07','23:14') ",
+        "INSERT INTO log_request_ad (id,id_ad,id_member,tanggal,jam) values ('24','7','1','2018-09-07','23:14') ",
+        "INSERT INTO log_request_ad (id,id_ad,id_member,tanggal,jam) values ('25','7','1','2018-09-07','23:14') ",
+        "INSERT INTO log_request_ad (id,id_ad,id_member,tanggal,jam) values ('26','8','1','2018-09-07','23:14') ",
+        "INSERT INTO log_request_ad (id,id_ad,id_member,tanggal,jam) values ('27','7','1','2018-09-07','23:15') ",
+        "INSERT INTO log_request_ad (id,id_ad,id_member,tanggal,jam) values ('28','7','1','2018-09-07','23:17') "
+    ]
+}

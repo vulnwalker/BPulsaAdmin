@@ -1,0 +1,49 @@
+{
+    "tableName": "absen",
+    "dumpFile": "dump\/absen.sql",
+    "index": [
+        {
+            "column_name": "id",
+            "key_name": "PRIMARY",
+            "non_uniqe": "0"
+        }
+    ],
+    "colums": [
+        {
+            "COLUMN_NAME": "id",
+            "COLUMN_TYPE": "int(11)",
+            "CHARACTER_SET_NAME": null,
+            "COLLATION_NAME": null,
+            "IS_NULLABLE": "NO"
+        },
+        {
+            "COLUMN_NAME": "id_member",
+            "COLUMN_TYPE": "int(11)",
+            "CHARACTER_SET_NAME": null,
+            "COLLATION_NAME": null,
+            "IS_NULLABLE": "NO"
+        },
+        {
+            "COLUMN_NAME": "tanggal",
+            "COLUMN_TYPE": "date",
+            "CHARACTER_SET_NAME": null,
+            "COLLATION_NAME": null,
+            "IS_NULLABLE": "NO"
+        },
+        {
+            "COLUMN_NAME": "point",
+            "COLUMN_TYPE": "int(11)",
+            "CHARACTER_SET_NAME": null,
+            "COLLATION_NAME": null,
+            "IS_NULLABLE": "NO"
+        }
+    ],
+    "default_value": [
+        "INSERT INTO absen (id,id_member,tanggal,point) values ('1','1','2018-08-23','100') ",
+        "INSERT INTO absen (id,id_member,tanggal,point) values ('2','2','2018-08-23','100') ",
+        "INSERT INTO absen (id,id_member,tanggal,point) values ('3','1','2018-08-28','100') ",
+        "INSERT INTO absen (id,id_member,tanggal,point) values ('4','4','2018-08-31','100') ",
+        "INSERT INTO absen (id,id_member,tanggal,point) values ('5','2','2018-09-04','100') ",
+        "INSERT INTO absen (id,id_member,tanggal,point) values ('8','1','2018-09-07','400') "
+    ]
+}
