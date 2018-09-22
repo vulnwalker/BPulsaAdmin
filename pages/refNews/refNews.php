@@ -51,9 +51,9 @@ class refNews extends baseObject{
         if(empty($err)){
           $dataInsert = array(
             'title' => $titleNews,
-            'content' => $contentNews,
+            'content' => base64_encode($editorContent),
             'tanggal' => date("Y-m-d"),
-            'gambar' => $this->putImage($gambarNews,"images/news/".md5(date("Y-m-d")).md5(date("H:i:s")).".jpg"),
+            // 'gambar' => $this->putImage($gambarNews,"images/news/".md5(date("Y-m-d")).md5(date("H:i:s")).".jpg"),
           );
           $query = $this->sqlInsert($this->tableName,$dataInsert);
           $this->sqlQuery($query);
@@ -70,8 +70,8 @@ class refNews extends baseObject{
         if(empty($err)){
           $dataInsert = array(
             'title' => $titleNews,
-            'content' => $contentNews,
-            'gambar' => $this->putImage($gambarNews,"images/news/".md5(date("Y-m-d")).md5(date("H:i:s")).".jpg"),
+            'content' => base64_encode($editorContent),
+            // 'gambar' => $this->putImage($gambarNews,"images/news/".md5(date("Y-m-d")).md5(date("H:i:s")).".jpg"),
           );
           $query = $this->sqlUpdate($this->tableName,$dataInsert,"id = '$idEdit'");
           $this->sqlQuery($query);
@@ -116,6 +116,7 @@ class refNews extends baseObject{
     <script type='text/javascript' src='js/refNews/refNews.js'></script>
     <script type='text/javascript' src='assets/widgets/datepicker/datepicker.js'></script>
     <script type='text/javascript' src='assets/widgets/multi-select/multiselect.js'></script>
+    <script type='text/javascript' src='js/textboxio/textboxio.js'></script>
     <script type='text/javascript'>
       $( document ).ready(function() {
         $this->Prefix.loading();
@@ -153,6 +154,15 @@ class refNews extends baseObject{
     }
     if(empty($jumlahData))$jumlahData = "25";
     if(empty($pageKe))$pageKe = "1";
+    // <div class='row' style='margin-top:5px !important;'>
+    //   <label class='col-sm-1 control-label' style='margin-top:6px;'>Deskripsi</label>
+    //   <div class='col-sm-11'>
+    //     ".$this->textBox(array(
+    //       "id" => 'filterDeskripsi',
+    //       "value" => $filterDeskripsi,
+    //     ))."
+    //   </div>
+    // </div>
     $content = "
       <div class='hide' id='popover-search' >
         <div class='pad5A '>
@@ -166,15 +176,7 @@ class refNews extends baseObject{
                   ))."
                 </div>
               </div>
-              <div class='row' style='margin-top:5px !important;'>
-                <label class='col-sm-1 control-label' style='margin-top:6px;'>Deskripsi</label>
-                <div class='col-sm-11'>
-                  ".$this->textBox(array(
-                    "id" => 'filterDeskripsi',
-                    "value" => $filterDeskripsi,
-                  ))."
-                </div>
-              </div>
+
               <div class='row' style='margin-top:5px !important;'>
                 <label class='col-sm-1 control-label' style='margin-top:6px;'>Stock</label>
                 <div class='col-sm-11'>
@@ -261,15 +263,35 @@ class refNews extends baseObject{
     foreach ($arrayData as $key => $value) {
         $$key = $value;
     }
+    $src = "images/default.jpg";
+    $string = html_entity_decode(base64_decode($content));
+    if( strpos( $string, 'img' ) !== false ) {
+       $doc = new DOMDocument();
+       libxml_use_internal_errors(true);
+       $doc->loadHTML( $string );
+       $xpath = new DOMXPath($doc);
+       $imgs = $xpath->query("//img");
+       $img = $imgs->item(0);
+       $src = $img->getAttribute("src");
+     }
 
+
+     $isi = strip_tags(base64_decode($content));
+
+      if (strlen($isi) > 250) {
+
+          $stringCut = substr($isi, 0, 200);
+
+          $isi = substr($stringCut, 0, strrpos($stringCut, ' ')).'...';
+      }
     $tableRow = "
     <tr class='$classRow'>
         <td style='text-align:center;vertical-align:middle;'>$no</td>
         <td style='text-align:center;vertical-align:middle;'>".$this->setCekBox($no - 1,$id,$this->Prefix)."</td>
         <td style='vertical-align:middle;'>$title</td>
-        <td>$content</td>
+        <td>$isi</td>
         <td style='text-align:center;vertical-align:middle;'>".$this->generateDate($tanggal)."</td>
-        <td style='text-align:center;vertical-align:middle;'><img src='$gambar' style='height:100px;width:100px;'></img></td>
+        <td style='text-align:center;vertical-align:middle;'><img src='$src' style='height:100px;width:100px;'></img></td>
 
     </tr>
     ";
@@ -390,26 +412,7 @@ class refNews extends baseObject{
                       </div>
                     </div>
                   </div>
-                  <div class='form-group'>
-                    <div class='row'>
-                      <label class='col-sm-3 control-label' style='margin-top:6px;'>Gambar</label>
-                      <div class='col-sm-9'>
-                        <div class='fileinput fileinput-new' data-provides='fileinput'>
-                          <div class='fileinput-preview thumbnail' data-trigger='fileinput' style='width: 200px; height: 150px;'><img id='thumbnailImages'></img></div>
-                            <div>
-                                <span class='btn btn-default btn-file'>
-                                    <span class='fileinput-image'>Select image</span>
-                                    <span class='fileinput-exists'>Change</span>
-                                    <input type='hidden' name='gambarNews' id='gambarNews' >
-                                    <input type='file' id='fileInputNews' onChange=$this->Prefix.imageChanged(); accept='image/x-png,image/gif,image/jpeg'>
-                                </span>
-                                <a href='#' class='btn btn-default fileinput-exists' data-dismiss='fileinput'>Remove</a>
-                            </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+
                 <div class='modal-footer'>
                     <input type='hidden' name='idEdit' id='idEdit' value=''>
                     <button type='button' class='btn btn-primary' onclick=$this->Prefix.saveNew();>Simpan</button>
@@ -419,6 +422,26 @@ class refNews extends baseObject{
         </div>
       </form>
     </div>";
+    //                   <div class='form-group'>
+                    //     <div class='row'>
+                    //       <label class='col-sm-3 control-label' style='margin-top:6px;'>Gambar</label>
+                    //       <div class='col-sm-9'>
+                    //         <div class='fileinput fileinput-new' data-provides='fileinput'>
+                    //           <div class='fileinput-preview thumbnail' data-trigger='fileinput' style='width: 200px; height: 150px;'><img id='thumbnailImages'></img></div>
+                    //             <div>
+                    //                 <span class='btn btn-default btn-file'>
+                    //                     <span class='fileinput-image'>Select image</span>
+                    //                     <span class='fileinput-exists'>Change</span>
+                    //                     <input type='hidden' name='gambarNews' id='gambarNews' >
+                    //                     <input type='file' id='fileInputNews' onChange=$this->Prefix.imageChanged(); accept='image/x-png,image/gif,image/jpeg'>
+                    //                 </span>
+                    //                 <a href='#' class='btn btn-default fileinput-exists' data-dismiss='fileinput'>Remove</a>
+                    //             </div>
+                    //         </div>
+                    //       </div>
+                    //     </div>
+                    //   </div>
+                    // </div>
 
     return $content;
   }
@@ -453,30 +476,12 @@ class refNews extends baseObject{
                     <div class='col-sm-9'>
                       ".$this->textArea(array(
                         "id" => 'contentNews',
-                        "value" => $getDataEdit['content']
+                        "value" => base64_decode($getDataEdit['content'])
                       ))."
                     </div>
                   </div>
                 </div>
-                <div class='form-group'>
-                  <div class='row'>
-                    <label class='col-sm-3 control-label' style='margin-top:6px;'>Gambar</label>
-                    <div class='col-sm-9'>
-                      <div class='fileinput fileinput-new' data-provides='fileinput'>
-                        <div class='fileinput-preview thumbnail' data-trigger='fileinput' style='width: 200px; height: 150px;'><img id='thumbnailImages' src ='".$getDataEdit['gambar']."'></img></div>
-                          <div>
-                              <span class='btn btn-default btn-file'>
-                                  <span class='fileinput-image'>Select image</span>
-                                  <span class='fileinput-exists'>Change</span>
-                                  <input type='hidden' name='gambarNews' id='gambarNews' value='".$this->imageToBase($getDataEdit['gambar'])."'  >
-                                  <input type='file' id='fileInputNews' onChange=$this->Prefix.imageChanged(); accept='image/x-png,image/gif,image/jpeg'>
-                              </span>
-                              <a href='#' class='btn btn-default fileinput-exists' data-dismiss='fileinput'>Remove</a>
-                          </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+
                 <div class='modal-footer'>
                     <input type='hidden' name='idEdit' id='idEdit' value='$idEdit'>
                     <button type='button' class='btn btn-primary' onclick=$this->Prefix.saveEdit();>Simpan</button>
@@ -486,7 +491,25 @@ class refNews extends baseObject{
         </div>
       </form>
     </div>";
-
+    // <div class='form-group'>
+    //   <div class='row'>
+    //     <label class='col-sm-3 control-label' style='margin-top:6px;'>Gambar</label>
+    //     <div class='col-sm-9'>
+    //       <div class='fileinput fileinput-new' data-provides='fileinput'>
+    //         <div class='fileinput-preview thumbnail' data-trigger='fileinput' style='width: 200px; height: 150px;'><img id='thumbnailImages' src ='".$getDataEdit['gambar']."'></img></div>
+    //           <div>
+    //               <span class='btn btn-default btn-file'>
+    //                   <span class='fileinput-image'>Select image</span>
+    //                   <span class='fileinput-exists'>Change</span>
+    //                   <input type='hidden' name='gambarNews' id='gambarNews' value='".$this->imageToBase($getDataEdit['gambar'])."'  >
+    //                   <input type='file' id='fileInputNews' onChange=$this->Prefix.imageChanged(); accept='image/x-png,image/gif,image/jpeg'>
+    //               </span>
+    //               <a href='#' class='btn btn-default fileinput-exists' data-dismiss='fileinput'>Remove</a>
+    //           </div>
+    //       </div>
+    //     </div>
+    //   </div>
+    // </div>
     return $content;
   }
 
@@ -519,7 +542,7 @@ class refNews extends baseObject{
     }
     $arrKondisi = array();
     if(!empty($filterTitleNews))$arrKondisi[] = " title like '%$filterTitleNews%'";
-    if(!empty($filterDeskripsi))$arrKondisi[] = " description like '%$filterDeskripsi%'";
+    // if(!empty($filterDeskripsi))$arrKondisi[] = " description like '%$filterDeskripsi%'";
     if(!empty($filterStock))$arrKondisi[] = " stock '%$filterStock%'";
     if(!empty($filterPrice))$arrKondisi[] = " price '%$filterPrice%'";
     $Kondisi= join(' and ',$arrKondisi);

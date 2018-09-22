@@ -89,6 +89,14 @@ var refNews = new baseObject2({
 					"use strict";
 					$(".multi-select").multiSelect();
 					$(".ms-container").append('<i class="glyph-icon icon-exchange"></i>');
+					textboxio.replaceAll('#contentNews', {
+						paste: {
+							style: 'clean'
+						},
+						css: {
+							stylesheets: ['js/textboxio/example.css']
+						}
+					});
 				}else{
 					refNews.errorAlert(resp.err);
 				}
@@ -113,6 +121,14 @@ var refNews = new baseObject2({
 						"use strict";
 						$(".multi-select").multiSelect();
 						$(".ms-container").append('<i class="glyph-icon icon-exchange"></i>');
+						textboxio.replaceAll('#contentNews', {
+							paste: {
+								style: 'clean'
+							},
+							css: {
+								stylesheets: ['js/textboxio/example.css']
+							}
+						});
 					}else{
 						refNews.errorAlert(resp.err);
 					}
@@ -163,7 +179,7 @@ var refNews = new baseObject2({
 		this.showLoading();
 		$.ajax({
 			type:'POST',
-			data : $("#"+refNews.formName+"_input").serialize(),
+			data : $("#"+refNews.formName+"_input").serialize()+"&editorContent="+refNews.getEditorContent(),
 			url: refNews.url+'&API=saveNew',
 				success: function(data) {
 					me.closeLoading();
@@ -183,7 +199,7 @@ var refNews = new baseObject2({
 		this.showLoading();
 		$.ajax({
 			type:'POST',
-			data : $("#"+refNews.formName+"_input").serialize(),
+			data : $("#"+refNews.formName+"_input").serialize()+"&editorContent="+refNews.getEditorContent(),
 			url: refNews.url+'&API=saveEdit',
 				success: function(data) {
 					me.closeLoading();
@@ -270,7 +286,12 @@ var refNews = new baseObject2({
       };
       fileReader.readAsDataURL(fileToLoad);
     }
-  }
+  },
+ getEditorContent: function(){
+		 var editors = textboxio.get('#contentNews');
+		 var editor = editors[0];
+		 return editor.content.get();
+ }
 
 
 
